@@ -79,7 +79,7 @@ const Home = () => {
 
                     <TouchableOpacity style={styles.loginButton}
                         onPress={() => navigation.navigate('AddUserredux')}>
-                        <Text>Add User Redux</Text>
+                        <Text>Add User Redux firebase</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.loginButton}
