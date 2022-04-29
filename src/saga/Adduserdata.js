@@ -7,6 +7,7 @@ import { Alert, ToastAndroid } from 'react-native';
 
 // demo firebase in data store
 //test firebase
+// git rebase
 const addUserdataFire = ({ payload }) => {
   firestore()
     .collection('Users')
