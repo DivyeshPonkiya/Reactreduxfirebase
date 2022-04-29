@@ -5,8 +5,13 @@ import { getError, showToast } from '../utils/helper';
 import firestore from "@react-native-firebase/firestore";
 import { Alert, ToastAndroid } from 'react-native';
 
+<<<<<<< HEAD
 // demo
 // demo 1
+=======
+// demo firebase in data store
+//test firebase
+>>>>>>> fixhot
 const addUserdataFire = ({ payload }) => {
   firestore()
     .collection('Users')
