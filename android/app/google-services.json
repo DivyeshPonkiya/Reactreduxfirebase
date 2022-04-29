@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557906112431",
+    "project_id": "reduxdemo-dc76e",
+    "storage_bucket": "reduxdemo-dc76e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557906112431:android:1f7ab80cdd00406b1e095a",
+        "android_client_info": {
+          "package_name": "com.reactnativefirebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557906112431-76keesjosmfokvqrfechrovjda26p3la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHNPe7vcfhyZik6_EZHYdLaSb6UVGcfVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557906112431-76keesjosmfokvqrfechrovjda26p3la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
