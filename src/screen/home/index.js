@@ -74,7 +74,7 @@ const Home = () => {
 
                     <TouchableOpacity style={styles.loginButton}
                         onPress={() => navigation.navigate('AddUser')}>
-                        <Text>Add user</Text>
+                        <Text>Add user Simple Firebase</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.loginButton}
