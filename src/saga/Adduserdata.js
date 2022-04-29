@@ -6,6 +6,7 @@ import firestore from "@react-native-firebase/firestore";
 import { Alert, ToastAndroid } from 'react-native';
 
 // demo firebase in data store
+//test firebase
 const addUserdataFire = ({ payload }) => {
   firestore()
     .collection('Users')
