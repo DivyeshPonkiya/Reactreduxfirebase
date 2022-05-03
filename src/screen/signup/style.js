@@ -26,6 +26,16 @@ export default StyleSheet.create({
         marginBottom: 10,
         padding: 10,
         color: '#fff',
+
+        fontSize: 20,
+        alignSelf: 'stretch',
+        height: 45,
+        paddingRight: 45,
+        paddingLeft: 8,
+        borderWidth: 1,
+        paddingVertical: 0,
+        borderColor: 'grey',
+        borderRadius: 5,
     },
     buttonContainer: {
         backgroundColor: '#2980b6',
@@ -50,4 +60,21 @@ export default StyleSheet.create({
         color: '#2980b6',
         fontSize: 18,
     },
+    textBoxContainer: {
+        position: 'relative',
+        alignSelf: 'stretch',
+        justifyContent: 'center'
+    },
+    touchableEyeicon: {
+        position: 'absolute',
+        right: 3,
+        height: 40,
+        width: 35,
+        padding: 2
+    },
+    buttonImage: {
+        resizeMode: 'contain',
+        height: '100%',
+        width: '100%',
+    }
 });

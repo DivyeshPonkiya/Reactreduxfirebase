@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import auth from '@react-native-firebase/auth';
 import { useNetInfo } from "@react-native-community/netinfo";
+import hideEye from '../../../src/assests/images/hide.png';
+import unhideEye from '../../../src/assests/images/unhide.png';
 
 const Signup = () => {
     const netInfo = useNetInfo();
@@ -13,6 +15,9 @@ const Signup = () => {
     const [uName, setName] = useState('');
     const [uPass, setPass] = useState('');
     const [uRPass, setRPass] = useState('');
+    const [eyeIcon1, setEyeIcon1] = useState(hideEye);
+    const [eyeIcon2, setEyeIcon2] = useState(hideEye);
+
 
     const handleSignup = (uName, uPass, uRPass) => {
         if (Platform.OS === "android") {
@@ -75,27 +80,42 @@ const Signup = () => {
                     placeholderTextColor='rgba(225,225,225,0.7)'
                     onChangeText={setName}
                     autoFocus={false}
-                    value={uName} 
-                    />
+                    value={uName}
+                />
+                <View style={styles.textBoxContainer}>
+                    <TextInput style={styles.input}
+                        returnKeyType="go"
+                        placeholder='Password'
+                        onSubmitEditing={() => ref_input3.current.focus()}
+                        placeholderTextColor='rgba(225,225,225,0.7)'
+                        secureTextEntry={eyeIcon1 ? true : false}
+                        ref={ref_input2}
+                        onChangeText={setPass}
+                        value={uPass} />
+                    <TouchableOpacity style={styles.touchableEyeicon} onPress={() => setEyeIcon1(!eyeIcon1)}>
+                        <Image resizeMode="contain"
+                            style={styles.buttonImage}
+                            source={eyeIcon1 ? hideEye : unhideEye}
+                        />
+                    </TouchableOpacity>
+                </View>
 
-                <TextInput style={styles.input}
-                    returnKeyType="go"
-                    placeholder='Password'
-                    onSubmitEditing={() => ref_input3.current.focus()}
-                    placeholderTextColor='rgba(225,225,225,0.7)'
-                    secureTextEntry
-                    ref={ref_input2}
-                    onChangeText={setPass}
-                    value={uPass} />
-
-                <TextInput style={styles.input}
-                    returnKeyType="go"
-                    placeholder='Password'
-                    placeholderTextColor='rgba(225,225,225,0.7)'
-                    secureTextEntry
-                    ref={ref_input3}
-                    onChangeText={setRPass}
-                    value={uRPass} />
+                <View style={styles.textBoxContainer}>
+                    <TextInput style={styles.input}
+                        returnKeyType="go"
+                        placeholder='Re-Password'
+                        placeholderTextColor='rgba(225,225,225,0.7)'
+                        secureTextEntry={eyeIcon2 ? true : false}
+                        ref={ref_input3}
+                        onChangeText={setRPass}
+                        value={uRPass} />
+                    <TouchableOpacity style={styles.touchableEyeicon} onPress={() => setEyeIcon2(!eyeIcon2)}>
+                        <Image resizeMode="contain"
+                            style={styles.buttonImage}
+                            source={eyeIcon2 ? hideEye : unhideEye}
+                        />
+                    </TouchableOpacity>
+                </View>
 
                 <TouchableOpacity style={styles.buttonContainer}
                     onPress={() =>

@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import auth from '@react-native-firebase/auth';
 import { useNetInfo } from "@react-native-community/netinfo";
+import hideEye from '../../../src/assests/images/hide.png';
+import unhideEye from '../../../src/assests/images/unhide.png';
 
 const Login = () => {
 
@@ -13,6 +15,7 @@ const Login = () => {
 
     const [uName, setName] = useState('divyesh@gmail.com');
     const [uPass, setPass] = useState('123456');
+    const [eyeIcon, setEyeIcon] = useState(hideEye);
 
     const handleLogin = (uName, uPass) => {
         if (Platform.OS === "android") {
@@ -49,6 +52,7 @@ const Login = () => {
         navigation.navigate('Signup')
         setName("");
         setPass("");
+        setEyeIcon(hideEye);
     }
 
     //-- for use next button focuse by enter button --//
@@ -73,14 +77,22 @@ const Login = () => {
                     onChangeText={setName}
                     value={uName} />
 
-                <TextInput style={styles.input}
-                    returnKeyType="go"
-                    placeholder='Password'
-                    placeholderTextColor='rgba(225,225,225,0.7)'
-                    secureTextEntry
-                    onChangeText={setPass}
-                    ref={ref_input2}
-                    value={uPass} />
+                <View style={styles.textBoxContainer}>
+                    <TextInput style={styles.input}
+                        returnKeyType="go"
+                        placeholder='Password'
+                        placeholderTextColor='rgba(225,225,225,0.7)'
+                        secureTextEntry={eyeIcon ? true : false}
+                        onChangeText={setPass}
+                        ref={ref_input2}
+                        value={uPass} />
+                    <TouchableOpacity style={styles.touchableEyeicon} onPress={() => setEyeIcon(!eyeIcon)}>
+                        <Image resizeMode="contain"
+                            style={styles.buttonImage}
+                            source={eyeIcon ? hideEye : unhideEye}
+                        />
+                    </TouchableOpacity>
+                </View>
 
                 <TouchableOpacity style={styles.buttonContainer}
                     onPress={() =>
