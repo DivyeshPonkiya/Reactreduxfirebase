@@ -10,6 +10,7 @@ import ApiContainer from '../screen/apidata/ApiAllLogics';
 import AddUser from '../screen/adduser/index';
 import Userdatalist from '../screen/adduser/userdatalist';
 import AddUserredux from '../screen/addUserRedux/index';
+import TabNavigator from './TabNavigation';
 
 
 const RootStack = createNativeStackNavigator();
@@ -36,13 +37,18 @@ const AppNavigation = () => {
                 />
                 <RootStack.Screen
                     options={{ headerShown: false }}
-                    name={NavigationRoutes.Home}
-                    component={Home}
+                    name={NavigationRoutes.Signup}
+                    component={Signup}
                 />
                 <RootStack.Screen
                     options={{ headerShown: false }}
-                    name={NavigationRoutes.Signup}
-                    component={Signup}
+                    name={NavigationRoutes.TabNavigator}
+                    component={TabNavigator}
+                />
+                <RootStack.Screen
+                    options={{ headerShown: false }}
+                    name={NavigationRoutes.Home}
+                    component={Home}
                 />
                 <RootStack.Screen
                     options={{ headerShown: false }}

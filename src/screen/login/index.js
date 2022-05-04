@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import auth from '@react-native-firebase/auth';
 import { useNetInfo } from "@react-native-community/netinfo";
+import SwitchSelector from 'react-native-switch-selector';
+import colors from '../../config/colors';
 import hideEye from '../../../src/assests/images/hide.png';
 import unhideEye from '../../../src/assests/images/unhide.png';
 
@@ -13,9 +15,11 @@ const Login = () => {
 
     const navigation = useNavigation();
 
-    const [uName, setName] = useState('divyesh@gmail.com');
+    const [uName, setName] = useState("divyesh@gmail.com");
+    const [uMobile, setMobile] = useState("");
     const [uPass, setPass] = useState('123456');
     const [eyeIcon, setEyeIcon] = useState(hideEye);
+    const [epoption, setepoption] = useState("E");
 
     const handleLogin = (uName, uPass) => {
         if (Platform.OS === "android") {
@@ -58,6 +62,11 @@ const Login = () => {
     //-- for use next button focuse by enter button --//
     const ref_input2 = useRef();
 
+    const epoptions = [
+        { label: "Email", value: "E" },
+        { label: "Phone", value: "P" },
+    ];
+
     return (
         <View style={styles.container}>
             <View style={styles.loginContainer}>
@@ -66,16 +75,43 @@ const Login = () => {
                     source={require('../../../src/assests/images/logo.jpg')} />
             </View>
             <View style={styles.formContainer}>
-                <TextInput style={styles.input}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    keyboardType='email-address'
-                    returnKeyType="go"
-                    placeholder='Email or Mobile Num'
-                    onSubmitEditing={() => ref_input2.current.focus()}
-                    placeholderTextColor='rgba(225,225,225,0.7)'
-                    onChangeText={setName}
-                    value={uName} />
+                <View style={styles.switch}>
+                    <SwitchSelector
+                        initial={0}
+                        onPress={value => setepoption(value)}
+                        textColor={colors.colorWhite} //'#7a44cf'
+                        selectedColor={colors.colorDarkBlue}
+                        buttonColor={colors.colorWhite}
+                        borderColor={colors.colorWhite}
+                        backgroundColor='transparent'
+                        hasPadding
+                        options={epoptions} />
+                </View>
+
+                {epoption == 'E' ? (
+                    <TextInput style={styles.input}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType='email-address'
+                        returnKeyType="go"
+                        placeholder='Enter Email'
+                        onSubmitEditing={() => ref_input2.current.focus()}
+                        placeholderTextColor='rgba(225,225,225,0.7)'
+                        onChangeText={setName}
+                        value={uName}
+                        />
+                ) : (
+                    <TextInput style={styles.input}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        keyboardType='numeric'
+                        returnKeyType="go"
+                        placeholder='Enter Mobile Num'
+                        onSubmitEditing={() => ref_input2.current.focus()}
+                        placeholderTextColor='rgba(225,225,225,0.7)'
+                        onChangeText={setMobile}
+                        value={uMobile} />
+                )}
 
                 <View style={styles.textBoxContainer}>
                     <TextInput style={styles.input}

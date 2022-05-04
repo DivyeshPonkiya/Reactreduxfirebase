@@ -1,4 +1,5 @@
 const NavigationRoutes = {
+    TabNavigator: 'TabNavigator',
     Home: 'Home',
     Signup: 'Signup',
     Login: 'Login',

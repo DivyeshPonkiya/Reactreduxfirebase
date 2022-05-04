@@ -5,7 +5,7 @@ import {
   SafeAreaView, StyleSheet,
 } from 'react-native';
 
-import AppNavigator from './src/navigation/appNavigation';
+import AppNavigation from './src/navigation/appNavigation';
 
 import { Provider } from 'react-redux';
 import  reduxStore from './src/redux/store';
@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Provider store={reduxStore.store}>
       <SafeAreaView style={styles.container}>
-        <AppNavigator />
+        <AppNavigation />
       </SafeAreaView>
     </Provider>
   );

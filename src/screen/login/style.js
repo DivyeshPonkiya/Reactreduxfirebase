@@ -81,5 +81,9 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         height: '100%',
         width: '100%',
-    }
+    },
+    switch: {
+        marginBottom: 10,
+        width:100,
+    },
 });

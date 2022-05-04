@@ -17,5 +17,6 @@ export default {
     colorError: 'rgb(255,0,0)',
     colorGreen: 'rgb(19, 213, 33)',
     colorLightGray: '#f4f4f4',
+    colorDarkBlue: '#2c3e50'
   };
   
