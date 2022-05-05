@@ -6,6 +6,7 @@ import auth from '@react-native-firebase/auth';
 import { useNetInfo } from "@react-native-community/netinfo";
 import hideEye from '../../../src/assests/images/hide.png';
 import unhideEye from '../../../src/assests/images/unhide.png';
+import colors from '../../config/colors';
 
 const Signup = () => {
     const netInfo = useNetInfo();

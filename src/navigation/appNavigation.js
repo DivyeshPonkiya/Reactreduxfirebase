@@ -3,15 +3,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import NavigationRoutes from './NavigationRoutes';
 import colors from '../config/colors';
-import Home from '../screen/home/index';
 import Login from '../screen/login/index';
 import Signup from '../screen/signup/index';
 import ApiContainer from '../screen/apidata/ApiAllLogics';
-import AddUser from '../screen/adduser/index';
-import Userdatalist from '../screen/adduser/userdatalist';
-import AddUserredux from '../screen/addUserRedux/index';
-import TabNavigator from './TabNavigation';
-
+import MyDrawer from './DrawerNavigator';
 
 const RootStack = createNativeStackNavigator();
 
@@ -42,33 +37,13 @@ const AppNavigation = () => {
                 />
                 <RootStack.Screen
                     options={{ headerShown: false }}
-                    name={NavigationRoutes.TabNavigator}
-                    component={TabNavigator}
-                />
-                <RootStack.Screen
-                    options={{ headerShown: false }}
                     name={NavigationRoutes.Home}
-                    component={Home}
+                    component={MyDrawer}
                 />
                 <RootStack.Screen
                     options={{ headerShown: false }}
                     name={NavigationRoutes.Apidata}
                     component={ApiContainer}
-                />
-                <RootStack.Screen
-                    options={{ headerShown: false }}
-                    name={NavigationRoutes.AddUser}
-                    component={AddUser}
-                />
-                <RootStack.Screen
-                    options={{ headerShown: false }}
-                    name={NavigationRoutes.Userdatalist}
-                    component={Userdatalist}
-                />
-                <RootStack.Screen
-                    options={{ headerShown: false }}
-                    name={NavigationRoutes.AddUserredux}
-                    component={AddUserredux}
                 />
             </RootStack.Navigator>
         </NavigationContainer>

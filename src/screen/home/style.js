@@ -4,7 +4,7 @@ import colors from '../../config/colors';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2c3e50',
+    backgroundColor: colors.colorDarkBlue,
   },
   loginpart: {
     margin: 10,

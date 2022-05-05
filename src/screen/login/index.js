@@ -99,7 +99,7 @@ const Login = () => {
                         placeholderTextColor='rgba(225,225,225,0.7)'
                         onChangeText={setName}
                         value={uName}
-                        />
+                    />
                 ) : (
                     <TextInput style={styles.input}
                         autoCapitalize="none"

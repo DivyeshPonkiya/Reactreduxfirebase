@@ -11,13 +11,14 @@ import NavigationRoutes from './NavigationRoutes';
 
 const Tab = createBottomTabNavigator();
 
+Entypo.loadFont();
+
 const TabNavigator = () => {
     return (
         <Tab.Navigator
-            initialRouteName={NavigationRoutes.Home}
             screenOptions={{
                 headerShown: false,
-                tabBarActiveTintColor: colors.colorDarkBlue,
+                tabBarActiveTintColor: colors.colorGreen,
                 tabBarInactiveTintColor: colors.colorBlack,
                 // tabBarShowLabel: false,
                 tabBarStyle: styles.tabBar,
@@ -63,7 +64,11 @@ export default TabNavigator;
 const styles = StyleSheet.create({
     tabBar: {
         backgroundColor: colors.colorWhite,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
+        // marginBottom: 10,
+        borderRadius:10,
+        margin:10,
+        height:100,
+        paddingBottom:20,
+        position:'absolute'
     },
 })

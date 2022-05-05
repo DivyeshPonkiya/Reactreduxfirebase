@@ -6,6 +6,4 @@ includeBuild('../node_modules/react-native-gradle-plugin')
 if (settings.hasProperty("newArchEnabled") && settings.newArchEnabled == "true") {
     include(":ReactAndroid")
     project(":ReactAndroid").projectDir = file('../node_modules/react-native/ReactAndroid')
-    include (':react-native-vector-icons')
-    project(':react-native-vector-icons').projectDir = file('../node_modules/react-native-vector-icons/android')
 }
