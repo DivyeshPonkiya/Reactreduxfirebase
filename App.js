@@ -16,7 +16,7 @@ const App = () => {
   return (
     <Provider store={reduxStore.store}>
       <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" animated={true} translucent  backgroundColor="transparent"/>
+        <StatusBar barStyle="dark-content" animated={true} translucent backgroundColor="transparent" />
         <AppNavigation />
       </SafeAreaView>
     </Provider>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, Alert, ToastAndroid, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, Alert, ToastAndroid, Platform, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
 import auth from '@react-native-firebase/auth';
@@ -87,56 +87,56 @@ const Login = () => {
                         hasPadding
                         options={epoptions} />
                 </View>
-
-                {epoption == 'E' ? (
-                    <TextInput style={styles.input}
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        keyboardType='email-address'
-                        returnKeyType="go"
-                        placeholder='Enter Email'
-                        onSubmitEditing={() => ref_input2.current.focus()}
-                        placeholderTextColor='rgba(225,225,225,0.7)'
-                        onChangeText={setName}
-                        value={uName}
-                    />
-                ) : (
-                    <TextInput style={styles.input}
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        keyboardType='numeric'
-                        returnKeyType="go"
-                        placeholder='Enter Mobile Num'
-                        onSubmitEditing={() => ref_input2.current.focus()}
-                        placeholderTextColor='rgba(225,225,225,0.7)'
-                        onChangeText={setMobile}
-                        value={uMobile} />
-                )}
-
-                <View style={styles.textBoxContainer}>
-                    <TextInput style={styles.input}
-                        returnKeyType="go"
-                        placeholder='Password'
-                        placeholderTextColor='rgba(225,225,225,0.7)'
-                        secureTextEntry={eyeIcon ? true : false}
-                        onChangeText={setPass}
-                        ref={ref_input2}
-                        value={uPass} />
-                    <TouchableOpacity style={styles.touchableEyeicon} onPress={() => setEyeIcon(!eyeIcon)}>
-                        <Image resizeMode="contain"
-                            style={styles.buttonImage}
-                            source={eyeIcon ? hideEye : unhideEye}
+                <KeyboardAvoidingView>
+                    {epoption == 'E' ? (
+                        <TextInput style={styles.input}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            keyboardType='email-address'
+                            returnKeyType="go"
+                            placeholder='Enter Email'
+                            onSubmitEditing={() => ref_input2.current.focus()}
+                            placeholderTextColor='rgba(225,225,225,0.7)'
+                            onChangeText={setName}
+                            value={uName}
                         />
+                    ) : (
+                        <TextInput style={styles.input}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            keyboardType='numeric'
+                            returnKeyType="go"
+                            placeholder='Enter Mobile Num'
+                            onSubmitEditing={() => ref_input2.current.focus()}
+                            placeholderTextColor='rgba(225,225,225,0.7)'
+                            onChangeText={setMobile}
+                            value={uMobile} />
+                    )}
+
+                    <View style={styles.textBoxContainer}>
+                        <TextInput style={styles.input}
+                            returnKeyType="go"
+                            placeholder='Password'
+                            placeholderTextColor='rgba(225,225,225,0.7)'
+                            secureTextEntry={eyeIcon ? true : false}
+                            onChangeText={setPass}
+                            ref={ref_input2}
+                            value={uPass} />
+                        <TouchableOpacity style={styles.touchableEyeicon} onPress={() => setEyeIcon(!eyeIcon)}>
+                            <Image resizeMode="contain"
+                                style={styles.buttonImage}
+                                source={eyeIcon ? hideEye : unhideEye}
+                            />
+                        </TouchableOpacity>
+                    </View>
+
+                    <TouchableOpacity style={styles.buttonContainer}
+                        onPress={() =>
+                            handleLogin(uName, uPass)
+                        }>
+                        <Text style={styles.buttonText}>LOGIN</Text>
                     </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity style={styles.buttonContainer}
-                    onPress={() =>
-                        handleLogin(uName, uPass)
-                    }>
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </TouchableOpacity>
-
+                </KeyboardAvoidingView>
                 <View style={styles.forNewusersignupText}>
                     <Text style={styles.forNewuserText}>For New user</Text>
                     <TouchableOpacity

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, } from 'react';
-import { View, Text, Dimensions, TouchableOpacity, ToastAndroid, ScrollView, RefreshControl, Pressable } from 'react-native';
+import { View, Text, Dimensions, TouchableOpacity, ToastAndroid, ScrollView, RefreshControl, Pressable, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
-import { Modal } from 'native-base';
+import ModalHome from '../../component/modal';
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -23,12 +23,6 @@ const Home = () => {
         setMessage('Hi there, how are you?');
         wait(2000).then(() => setRefreshing(false));
     }, []);
-
-    const [isModalVisible, setModalVisible] = useState(false);
-
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
 
     const Increase = () => setCount(prevCount => prevCount + 1);
     const Decrease = () => setCount(prevCount => prevCount - 1);
@@ -89,9 +83,9 @@ const Home = () => {
                         <Text>{message} </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.loginButton} onPress={() => size()}>
+                    <TouchableHighlight style={styles.loginButton} onPress={() => size()}>
                         <Text>Get window size </Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
 
                     <View style={styles.countContainer}>
                         <Text>The window size {windowWidthSize} pixels</Text>
@@ -102,17 +96,7 @@ const Home = () => {
                         <Text>Api data</Text>
                     </TouchableOpacity>
 
-                    {/* <Pressable style={styles.loginButton}
-                        onPress={toggleModal}>
-                        <Text>Shoe Modal</Text>
-                    </Pressable>
-                    <Modal isVisible={isModalVisible}>
-                        <View style={{ flex: 1 }}>
-                            <Text>Hello!</Text>
-
-                            <Pressable title="Hide modal" onPress={toggleModal} />
-                        </View>
-                    </Modal> */}
+                    <ModalHome />
 
                     <TouchableOpacity style={styles.loginButton}
                         onPress={SignOut}>

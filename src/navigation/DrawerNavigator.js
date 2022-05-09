@@ -15,6 +15,7 @@ import {
     DrawerItem,
 } from '@react-navigation/drawer';
 import TabNavigator from './TabNavigation';
+import sectionList from '../screen/sectionList/index';
 
 const Drawer = createDrawerNavigator();
 
@@ -26,7 +27,7 @@ const CustomDrawerContent = (props) => {
             <DrawerItemList {...props} />
             <DrawerItem
                 label="Home"
-                onPress={() => props.Navigation.navigate('Home')}
+                onPress={() => props.navigation.navigate('Home')}
             />
         </DrawerContentScrollView>
     );
@@ -46,10 +47,10 @@ const MyDrawer = () => {
         >
             <Drawer.Screen name={NavigationRoutes.Home} component={TabNavigator}
                 options={{
-                    // drawerLabel: 'Home',
                     drawerIcon: ({ color }) => (
                         <Entypo name='Home' size={25} color={color} />
-                    )
+                    ),
+                    drawerLabel: 'Home',
                 }} />
             <Drawer.Screen name={NavigationRoutes.AddUser} component={AddUser}
                 options={{
@@ -71,6 +72,13 @@ const MyDrawer = () => {
                         <Entypo name='Home' size={25} color={color} />
                     ),
                     drawerLabel: 'User data list'
+                }} />
+            <Drawer.Screen name={NavigationRoutes.SectionList} component={sectionList}
+                options={{
+                    drawerIcon: ({ color }) => (
+                        <Entypo name='Home' size={25} color={color} />
+                    ),
+                    drawerLabel: 'Section List'
                 }} />
         </Drawer.Navigator >
     );

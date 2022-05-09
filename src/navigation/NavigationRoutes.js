@@ -7,6 +7,7 @@ const NavigationRoutes = {
     AddUser: 'AddUser',
     Userdatalist: 'Userdatalist',
     AddUserredux: 'AddUserredux',
+    SectionList: 'SectionList',
   };
   
   export default NavigationRoutes;
