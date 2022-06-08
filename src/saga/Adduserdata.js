@@ -1,15 +1,16 @@
-import { call, debounce, put, takeLatest } from 'redux-saga/effects';
-import { goBack } from '../navigation/navigationServices';
-import AddUserDataActions, { AddUserDataTypes } from '../redux/addUserdata';
-import { getError, showToast } from '../utils/helper';
-import firestore from "@react-native-firebase/firestore";
-import { Alert, ToastAndroid } from 'react-native';
+import React, {useState, useRef, useEffect} from 'react';
+import {call, debounce, put, takeLatest} from 'redux-saga/effects';
+import {goBack} from '../navigation/navigationServices';
+import AddUserDataActions, {AddUserDataTypes} from '../redux/addUserdata';
+import {getError, showToast} from '../utils/helper';
+import firestore from '@react-native-firebase/firestore';
+import {Alert, ToastAndroid} from 'react-native';
 
 // demo
 // demo 1
 // demo firebase in data store
 //test firebase
-const addUserdataFire = ({ payload }) => {
+const addUserdataFire = ({payload}) => {
   firestore()
     .collection('Users')
     .add({
@@ -18,9 +19,13 @@ const addUserdataFire = ({ payload }) => {
       username: payload.username,
     })
     .then(() => {
-      ToastAndroid.show("Data Add Successfully", ToastAndroid.SHORT, ToastAndroid.BOTTOM);
+      ToastAndroid.show(
+        'Data Add Successfully',
+        ToastAndroid.SHORT,
+        ToastAndroid.BOTTOM,
+      );
     })
-    .catch((error) => {
+    .catch(error => {
       Alert.alert(
         'Exception',
         error,
@@ -29,29 +34,40 @@ const addUserdataFire = ({ payload }) => {
             text: 'Ok',
           },
         ],
-        { cancelable: false },
-      )
-    })
-}
+        {cancelable: false},
+      );
+    });
+};
 
-function* addUserdata(api, { payload }) {
-  // console.log("payload", payload)
+const getUserdataFire = () => {
+  const [threads, setThreads] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+    firestore()
+      .collection('Users')
+      .get()
+      .then(querySnapshot => {
+        const threads = [];
 
-  const response = yield call(api.createNewProduct, payload);
+        querySnapshot.forEach(documentSnapshot => {
+          threads.push({
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          });
+        });
 
-  if (response?.status === 200 || response?.status === 201) {
-    yield put(AddUserDataActions.addProductSuccess());
-    showToast(response?.data?.message);
+        setThreads(threads);
 
-    goBack();
-  } else {
-    const error = yield call(getError, response);
+        if (loading) {
+          setLoading(false);
+        }
+      });
+  console.log('threads', threads);
 
-    showToast(error);
-    yield put(AddUserDataActions.addProductFailure(error));
-  }
-}
+  return AddUserDataActions.getUserdataSuccess(threads);
+};
 
 export default [
   takeLatest(AddUserDataTypes.ADD_USERDATA_REQUEST, addUserdataFire),
+  takeLatest(AddUserDataTypes.GET_USERDATA_REQUEST, getUserdataFire),
 ];
